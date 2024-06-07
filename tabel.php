@@ -33,9 +33,11 @@
                                 echo "<td>".$row['kategori']."</td>";
                                 echo "<td>".$row['nominal']."</td>";
                                 echo "<td>".$row['tanggal_input']."</td>";
+
+                                $confim = "onclick='return confirm(\"Apakah anda yakin ingin menghapus data ini?\")'";
                                 echo "<td>
                                         <a href='edit.php?id=".$row['id']."' class='btn btn-warning'><i class='fa-regular fa-pen-to-square'></i></a>
-                                        <a href='delete.php?id=".$row['id']."' class='btn btn-danger'><i class='fa-solid fa-trash'></i></a></td>";
+                                        <a href='aksi_delete.php?id=".$row['id']."' ".$confim." class='btn btn-danger'><i class='fa-solid fa-trash'></i></a></td>";
                             } ?>
                         </table>
                     </div>
