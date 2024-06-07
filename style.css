@@ -28,3 +28,13 @@ h3{
     background-color: #3b5345;
     border: 1px solid #466754;
 }
+
+/* PRINT */
+@media print {
+    body{
+        background-image: none;
+    }
+    .noPrint{
+        display:none;
+    }
+}
