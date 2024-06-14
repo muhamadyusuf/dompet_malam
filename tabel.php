@@ -39,7 +39,7 @@
                                     echo "<td>".$no++."</td>";
                                     echo "<td>".$row['tanggal']."</td>";
                                     echo "<td>".$row['kategori']."</td>";
-                                    echo "<td>".$row['nominal']."</td>";
+                                    echo "<td>Rp. ".number_format($row['nominal'], 0, ',', '.')."</td>"; 
                                     echo "<td>".$row['tanggal_input']."</td>";
 
                                     $confim = "onclick='return confirm(\"Apakah anda yakin ingin menghapus data ini?\")'";

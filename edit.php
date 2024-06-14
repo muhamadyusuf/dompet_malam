@@ -29,7 +29,7 @@ $row = $data->fetch_assoc();
                     <div class="box">
                         <h3>Ubah Transaksi</h3>
                         <a href="tabel.php" class="btn mb-2"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-                        <form action="aksi_edit.php" method="POST">
+                        <form action="aksi_edit.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $row['id'];?>">
 
                             <!-- 
@@ -71,8 +71,20 @@ $row = $data->fetch_assoc();
                                 <textarea class="form-control" id="keterangan" name="keterangan" required><?php echo $row['keterangan'];?></textarea>
                             </div>
 
+                            <!-- FORM INPUT TRANSAKSI - LAMPIRAN -->
+                            <div class="form-group mb-3">
+                                <label for="lampiran">Lampiran</label>
+                                <input type="file" class="form-control" id="lampiran" name="lampiran">
+                                <?php if (!empty($row['lampiran'])): ?>
+                                    <p>Lampiran saat ini: <a href="<?php echo $row['lampiran']; ?>" target="_blank">Lihat Lampiran</a></p>
+                                    <a href="aksi_hapus_lampiran.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus lampiran ini?')"><i class='fa-solid fa-trash'></i> Hapus Lampiran</a>
+                                <?php else: ?>
+                                    <p>Tidak ada lampiran.</p>
+                                <?php endif; ?>
+                            </div>
+
                             <!-- SUBMIT -->
-                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
                         </form>
                     </div>
                 </div>

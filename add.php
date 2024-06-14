@@ -10,7 +10,7 @@
                     <div class="box">
                         <h3>Tambah Transaksi</h3>
                         <a href="tabel.php" class="btn mb-2"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-                        <form action="aksi_add.php" method="POST">
+                        <form action="aksi_add.php" method="POST" enctype="multipart/form-data">
                             <!-- 
                                 FORM INPUT TRANSAKSI
                                 - TANGGAL
@@ -50,8 +50,14 @@
                                 <textarea class="form-control" id="keterangan" name="keterangan" required></textarea>
                             </div>
 
+                            <!-- FORM INPUT TRANSAKSI - LAMPIRAN -->
+                            <div class="mb-3">
+                                <label for="lampiran" class="form-label">Lampiran</label>
+                                <input type="file" class="form-control" id="lampiran" name="lampiran">
+                            </div>
+                            
                             <!-- SUBMIT -->
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary w-100">Simpan</button>
                         </form>
                     </div>
                 </div>
