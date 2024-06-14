@@ -1,3 +1,9 @@
+<?php
+include('koneksi.php');
+
+// Menampilkan kategori berdasarkan tabel kategori
+$query = "SELECT * FROM kategori";
+$data = mysqli_query($koneksi, $query); ?>
 <html>
     <head>
         <title>Tambah Transaksi</title>
@@ -24,11 +30,12 @@
                                 - KATEGORI
                              -->
                             <div class="mb-3">
-                                <label for="kategori" class="form-label">Kategori</label>
-                                <select class="form-select" id="kategori" name="kategori" required>
+                                <label for="kategori_id" class="form-label">Kategori</label>
+                                <select class="form-select" id="kategori_id" name="kategori_id" required>
                                     <option value="">Pilih Kategori</option>
-                                    <option value="Pemasukan">Pemasukan</option>
-                                    <option value="Pengeluaran">Pengeluaran</option>
+                                    <?php foreach($data as $kategori) { ?>
+                                    <option value="<?php echo $kategori['id']; ?>"><?php echo $kategori['nama']; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
 

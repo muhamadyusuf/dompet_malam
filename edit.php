@@ -15,6 +15,10 @@ $data = $koneksi->query($sql);
 // ambil data
 $row = $data->fetch_assoc();
 
+// Menampilkan kategori berdasarkan tabel kategori
+$query = "SELECT * FROM kategori";
+$data = mysqli_query($koneksi, $query);
+
 ?>
 
 <html>
@@ -44,12 +48,13 @@ $row = $data->fetch_assoc();
                                 FORM INPUT TRANSAKSI
                                 - KATEGORI
                              -->
-                            <div class="mb-3">
-                                <label for="kategori" class="form-label">Kategori</label>
-                                <select class="form-select" id="kategori" name="kategori" required>
+                             <div class="mb-3">
+                                <label for="kategori_id" class="form-label">Kategori</label>
+                                <select class="form-select" id="kategori_id" name="kategori_id" required>
                                     <option value="">Pilih Kategori</option>
-                                    <option value="Pemasukan" <?php if($row['kategori'] == "Pemasukan"){ echo "selected='selected'"; } ?>>Pemasukan</option>
-                                    <option value="Pengeluaran" <?php if($row['kategori'] == "Pengeluaran"){ echo "selected='selected'"; } ?>>Pengeluaran</option>
+                                    <?php foreach($data as $kategori) { ?>
+                                    <option value="<?php echo $kategori['id']; ?>"<?php if($kategori['id'] == $row['kategori_id']){ echo "selected='selected'";}?>><?php echo $kategori['nama']; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
 

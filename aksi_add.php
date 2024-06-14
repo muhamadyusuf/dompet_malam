@@ -5,7 +5,7 @@ include 'koneksi.php';
 
 // ambil data dari form
 $tanggal = $_POST['tanggal'];
-$kategori = $_POST['kategori'];
+$kategori_id = $_POST['kategori_id'];
 $nominal = $_POST['nominal'];
 $keterangan = $_POST['keterangan'];
 $tanggal_input = date('Y-m-d H:i:s');
@@ -23,7 +23,7 @@ if (isset($_FILES['lampiran']) && $_FILES['lampiran']['error'] == 0) {
 }
 
 // query insert
-$sql = "INSERT INTO transaksi (tanggal, kategori, nominal, keterangan, tanggal_input, lampiran) VALUES ('$tanggal', '$kategori', '$nominal', '$keterangan', '$tanggal_input', '$lampiran')";
+$sql = "INSERT INTO transaksi (tanggal, kategori_id, nominal, keterangan, tanggal_input, lampiran) VALUES ('$tanggal', '$kategori_id', '$nominal', '$keterangan', '$tanggal_input', '$lampiran')";
 if ($koneksi->query($sql) === TRUE) {
     echo "<script>
             alert('Data berhasil ditambahkan');

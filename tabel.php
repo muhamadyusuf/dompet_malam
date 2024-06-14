@@ -6,7 +6,7 @@
     <body>
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col col-lg-7">
+                <div class="col col-lg-10">
                     <div class="box">
                         <h3>Daftar Transaksi</h3>
                         <div class="btn-group noPrint" role="group" aria-label="Basic example">
@@ -25,7 +25,12 @@
                             <?php
                             include 'koneksi.php';
                             $no = 1;
-                            $sql = "SELECT * FROM transaksi";
+                            $sql = "SELECT
+                                        transaksi.*,
+                                        kategori.nama as nama_kategori
+                                    FROM
+                                        transaksi
+                                    INNER JOIN kategori ON transaksi.kategori_id = kategori.id";
                             $data = $koneksi->query($sql);
 
                             // cek jumlah data
@@ -38,7 +43,7 @@
                                     echo "<tr>";
                                     echo "<td>".$no++."</td>";
                                     echo "<td>".$row['tanggal']."</td>";
-                                    echo "<td>".$row['kategori']."</td>";
+                                    echo "<td>".$row['nama_kategori']."</td>";
                                     echo "<td>Rp. ".number_format($row['nominal'], 0, ',', '.')."</td>"; 
                                     echo "<td>".$row['tanggal_input']."</td>";
 
